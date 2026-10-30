@@ -1,0 +1,222 @@
+/* =============================================================================
+   FLOODSCOPE CINEMATIC MOTION SYSTEM & KEYFRAMES
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   1. Animated Contour-Line Pattern (Hero & Gateway backdrop)
+   --------------------------------------------------------------------------- */
+@keyframes contourDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.cinematic-contour-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(242, 183, 53, 0.03) 0%, transparent 60%),
+    repeating-radial-gradient(
+      circle at 45% 55%,
+      transparent 0,
+      transparent 42px,
+      rgba(198, 200, 208, 0.035) 43px,
+      rgba(198, 200, 208, 0.035) 44px,
+      transparent 45px,
+      transparent 90px
+    );
+  background-size: 140% 140%;
+  animation: contourDrift 45s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+/* ---------------------------------------------------------------------------
+   2. Signature Marigold Border Light Sweep (Moving metallic sheen)
+   --------------------------------------------------------------------------- */
+@keyframes marigoldBorderSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.marigold-border-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.marigold-border-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(242, 183, 53, 0.75) 50%,
+    rgba(231, 232, 236, 0.9) 53%,
+    rgba(242, 183, 53, 0.75) 56%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 250% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: marigoldBorderSweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   3. Subtle Metallic Silver Border Light
+   --------------------------------------------------------------------------- */
+@keyframes silverShimmer {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  50%, 100% {
+    transform: translateX(200%) skewX(-20deg);
+  }
+}
+
+.silver-shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.silver-shimmer-sweep::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(231, 232, 236, 0.14),
+    transparent
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  animation: silverShimmer 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   4. Gentle Pulse Around Selected Control
+   --------------------------------------------------------------------------- */
+@keyframes marigoldActivePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(242, 183, 53, 0.4), 0 0 12px rgba(242, 183, 53, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 2px rgba(242, 183, 53, 0.7), 0 0 22px rgba(242, 183, 53, 0.32);
+  }
+}
+
+.control-pulse-active {
+  animation: marigoldActivePulse 2.8s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   5. Ripple Feedback On Triggering Analysis
+   --------------------------------------------------------------------------- */
+@keyframes rippleExpand {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.btn-ripple-wave {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid var(--color-gold);
+  pointer-events: none;
+  animation: rippleExpand 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ---------------------------------------------------------------------------
+   6. Map Focus Indicator for Selected Feature / Sector
+   --------------------------------------------------------------------------- */
+@keyframes reticleSweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.map-focus-reticle {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  margin-top: -27px;
+  margin-left: -27px;
+  border: 1px dashed rgba(242, 183, 53, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: reticleSweep 16s linear infinite;
+  box-shadow: 0 0 16px rgba(242, 183, 53, 0.2);
+}
+
+/* ---------------------------------------------------------------------------
+   7. Loading Skeleton Wave
+   --------------------------------------------------------------------------- */
+@keyframes skeletonPulse {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.motion-skeleton-bar {
+  background: linear-gradient(
+    90deg,
+    rgba(18, 48, 74, 0.6) 25%,
+    rgba(27, 66, 101, 0.8) 50%,
+    rgba(18, 48, 74, 0.6) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonPulse 1.8s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   8. Reduced Motion Overrides (Section 7)
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-contour-bg,
+  .marigold-border-sheen::after,
+  .silver-shimmer-sweep::before,
+  .control-pulse-active,
+  .map-focus-reticle,
+  .motion-skeleton-bar,
+  .btn-ripple-wave {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  * {
+    scroll-behavior: auto !important;
+  }
+}

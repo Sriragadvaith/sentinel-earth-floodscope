@@ -1,0 +1,429 @@
+/* =============================================================================
+   SENTINEL EARTH — FLOODSCOPE
+   PREMIUM GLASSMORPHISM SYSTEM (TOKENS & SHARED SURFACES)
+   ============================================================================= */
+
+:root {
+  /* -------------------------------------------------------------------------
+     1. Primitives (Required Palette)
+     ------------------------------------------------------------------------- */
+  --espresso-900: #241B1A;
+  --mocha-600: #6F5147;
+  --mocha-400: #92766B;
+  --platinum-100: #E5E4E2;
+  --lavender-200: #D8CCF0;
+  --panel-elevated: #342824;
+
+  /* Centralized System Tokens */
+  --bg-deep: #241B1A;
+  --bg-surface: #2E2221;
+  --bg-surface-elevated: #342824;
+  --bg-surface-hover: #45342E;
+  --border-subtle: rgba(229, 228, 226, 0.16);
+  --border-strong: rgba(229, 228, 226, 0.28);
+  --border-focus: #D8CCF0;
+  --text-primary: #E5E4E2;
+  --text-secondary: #C5C3BF;
+  --text-muted: #92766B;
+  --text-silver: #E5E4E2;
+  --color-cyan: #D8CCF0;
+  --color-lavender: #D8CCF0;
+  --color-mocha: #6F5147;
+  --color-mocha-muted: #92766B;
+  --color-teal: #4A3832;
+  --color-gold: #F2B735;
+  --color-amber: #F2B735;
+  --color-rose: #FF5A4E;
+  --color-emerald: #10B981;
+
+  /* -------------------------------------------------------------------------
+     2. Semantic Glass Tokens
+     ------------------------------------------------------------------------- */
+  --glass-tint: rgb(36 27 26 / 0.78);
+  --glass-tint-top: rgb(111 81 71 / 0.30);
+  --glass-hover: rgb(146 118 107 / 0.22);
+  --glass-pressed: rgb(146 118 107 / 0.32);
+  --glass-border: rgb(229 228 226 / 0.16);
+  --glass-border-strong: rgb(229 228 226 / 0.28);
+  --glass-highlight: inset 0 1px 0 rgb(229 228 226 / 0.10);
+  --glass-shadow: 0 12px 40px rgb(0 0 0 / 0.35), 0 2px 8px rgb(0 0 0 / 0.25);
+  --glass-blur: 22px;
+  --glass-saturate: 140%;
+  --text-on-glass: var(--platinum-100);
+  --accent: var(--lavender-200);
+  --text-on-accent: var(--espresso-900);
+  --focus-ring: 2px solid var(--lavender-200);
+  --focus-ring-offset: 2px;
+  --radius-glass: 14px;
+  --radius-glass-item: 10px;
+  --glass-fallback: rgb(36 27 26 / 0.96);
+
+  /* -------------------------------------------------------------------------
+     3. Z-Index Scale Tokens
+     ------------------------------------------------------------------------- */
+  --z-map: 0;
+  --z-map-controls: 10;
+  --z-sidebar: 40;
+  --z-dropdown: 60;
+  --z-tooltip: 70;
+  --z-modal: 80;
+  --z-toast: 90;
+
+  /* -------------------------------------------------------------------------
+     4. Dynamic Layout Metrics
+     ------------------------------------------------------------------------- */
+  --sidebar-w: 68px;
+}
+
+/* ---------------------------------------------------------------------------
+   5. Base Glass Surfaces & Modifiers
+   --------------------------------------------------------------------------- */
+.glass-surface {
+  background: linear-gradient(180deg, var(--glass-tint-top) 0%, transparent 100%), var(--glass-tint);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  color: var(--text-on-glass);
+}
+
+.glass-surface--sidebar {
+  background: linear-gradient(180deg, var(--glass-tint-top) 0%, rgb(36 27 26 / 0.85) 100%), var(--glass-tint);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-right: 1px solid var(--glass-border);
+  box-shadow: inset -1px 0 0 rgb(229 228 226 / 0.08), 8px 0 32px rgb(0 0 0 / 0.32);
+  color: var(--text-on-glass);
+}
+
+.glass-surface--floating {
+  background: linear-gradient(180deg, var(--glass-tint-top) 0%, transparent 80%), var(--glass-tint);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border-strong);
+  box-shadow: var(--glass-highlight), 0 20px 48px rgb(0 0 0 / 0.45), 0 4px 16px rgb(0 0 0 / 0.3);
+  border-radius: var(--radius-glass);
+  color: var(--text-on-glass);
+  animation: glassFloatingEntrance 140ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes glassFloatingEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   6. Shared Interactive Item & Button Classes
+   --------------------------------------------------------------------------- */
+.glass-nav-item {
+  color: var(--platinum-100);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-glass-item);
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out, box-shadow 160ms ease-out;
+  outline: none;
+  user-select: none;
+}
+
+.glass-nav-item:hover {
+  background: var(--glass-hover);
+  border-color: var(--glass-border);
+  box-shadow: 0 0 12px rgb(216 204 240 / 0.12);
+}
+
+.glass-nav-item:hover svg,
+.glass-nav-item:hover .nav-icon {
+  transform: scale(1.05);
+  transition: transform 160ms ease-out;
+}
+
+.glass-nav-item:active {
+  background: var(--glass-pressed);
+  transform: scale(0.98);
+}
+
+.glass-nav-item.is-active,
+.glass-nav-item[aria-current="page"] {
+  background: var(--lavender-200);
+  color: var(--espresso-900);
+  border-color: var(--lavender-200);
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgb(216 204 240 / 0.35);
+}
+
+.glass-nav-item.is-active svg,
+.glass-nav-item[aria-current="page"] svg {
+  color: var(--espresso-900);
+}
+
+/* Left Indicator Cue for Sidebar Active Items */
+.glass-nav-item.has-indicator::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--lavender-200);
+  opacity: 0;
+  transition: opacity 160ms ease-out;
+}
+
+.glass-nav-item.has-indicator.is-active::before,
+.glass-nav-item.has-indicator[aria-current="page"]::before {
+  opacity: 1;
+}
+
+/* Primary Glass Action Button */
+.glass-btn-primary {
+  background: var(--lavender-200);
+  color: var(--espresso-900);
+  border: 1px solid var(--lavender-200);
+  border-radius: var(--radius-glass-item);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: filter 160ms ease-out, transform 160ms ease-out, box-shadow 160ms ease-out;
+  outline: none;
+}
+
+.glass-btn-primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 4px 14px rgb(216 204 240 / 0.4);
+}
+
+.glass-btn-primary:active:not(:disabled) {
+  filter: brightness(0.92);
+  transform: scale(0.98);
+}
+
+.glass-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+}
+
+/* Secondary / Translucent Glass Button */
+.glass-btn-secondary {
+  background: rgb(146 118 107 / 0.16);
+  color: var(--platinum-100);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-glass-item);
+  padding: 8px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out;
+  outline: none;
+}
+
+.glass-btn-secondary:hover:not(:disabled) {
+  background: var(--glass-hover);
+  border-color: var(--glass-border-strong);
+  color: #ffffff;
+}
+
+.glass-btn-secondary:active:not(:disabled) {
+  background: var(--glass-pressed);
+  transform: scale(0.98);
+}
+
+.glass-btn-secondary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Icon Button */
+.glass-icon-btn {
+  background: rgb(36 27 26 / 0.5);
+  color: var(--platinum-100);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-glass-item);
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out, box-shadow 160ms ease-out;
+  outline: none;
+}
+
+.glass-icon-btn:hover:not(:disabled) {
+  background: var(--glass-hover);
+  border-color: var(--glass-border-strong);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgb(216 204 240 / 0.14);
+}
+
+.glass-icon-btn:active:not(:disabled) {
+  background: var(--glass-pressed);
+  transform: scale(0.96);
+}
+
+.glass-icon-btn.is-active {
+  background: var(--lavender-200);
+  color: var(--espresso-900);
+  border-color: var(--lavender-200);
+}
+
+/* Standard Focus Ring across all interactive glass elements */
+:focus-visible {
+  outline: var(--focus-ring) !important;
+  outline-offset: var(--focus-ring-offset) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   7. Glass Tooltip Component Styles (Portal Rooted)
+   --------------------------------------------------------------------------- */
+.glass-tooltip-bubble {
+  position: fixed;
+  z-index: var(--z-tooltip);
+  background: rgb(36 27 26 / 0.94);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+  border: 1px solid var(--glass-border-strong);
+  box-shadow: var(--glass-highlight), 0 8px 24px rgb(0 0 0 / 0.4);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--platinum-100);
+  pointer-events: none;
+  white-space: nowrap;
+  animation: glassTooltipFade 120ms ease-out forwards;
+}
+
+@keyframes glassTooltipFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   8. Responsive & Accessibility Overrides (A11y, High Contrast, Motion)
+   --------------------------------------------------------------------------- */
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-surface,
+  .glass-surface--sidebar,
+  .glass-surface--floating,
+  .glass-tooltip-bubble {
+    background: var(--glass-fallback) !important;
+  }
+}
+
+/* Respect user preference for reduced transparency */
+@media (prefers-reduced-transparency: reduce) {
+  .glass-surface,
+  .glass-surface--sidebar,
+  .glass-surface--floating,
+  .glass-tooltip-bubble {
+    background: var(--glass-fallback) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* High Contrast Mode & Windows Forced Colors */
+@media (prefers-contrast: more) {
+  .glass-surface,
+  .glass-surface--sidebar,
+  .glass-surface--floating {
+    background: rgb(20 15 14 / 0.98) !important;
+    border: 2px solid var(--platinum-100) !important;
+  }
+  .glass-nav-item:hover {
+    border-color: var(--platinum-100) !important;
+  }
+  .glass-nav-item.is-active,
+  .glass-nav-item[aria-current="page"] {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .glass-surface,
+  .glass-surface--sidebar,
+  .glass-surface--floating,
+  .glass-nav-item,
+  .glass-btn-primary,
+  .glass-btn-secondary,
+  .glass-icon-btn {
+    forced-color-adjust: none;
+    background: Canvas !important;
+    color: CanvasText !important;
+    border: 1px solid ButtonBorder !important;
+  }
+  .glass-nav-item.is-active,
+  .glass-btn-primary {
+    background: Highlight !important;
+    color: HighlightText !important;
+  }
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  .glass-surface--floating,
+  .glass-tooltip-bubble {
+    animation: none !important;
+  }
+  .glass-nav-item,
+  .glass-btn-primary,
+  .glass-btn-secondary,
+  .glass-icon-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+  .glass-nav-item:hover svg,
+  .glass-nav-item:hover .nav-icon {
+    transform: none !important;
+  }
+}
+
+/* Mobile Performance Tuning (<1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --glass-blur: 14px;
+  }
+  .glass-icon-btn,
+  .glass-btn-primary,
+  .glass-btn-secondary {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

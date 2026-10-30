@@ -1,0 +1,464 @@
+/* =============================================================================
+   SATELLITE ANALYSIS PANEL CSS — Sentinel Earth FloodScope
+   ============================================================================= */
+
+.satellite-analysis-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.sat-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sat-main-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sat-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.sat-grid-layout {
+  display: grid;
+  grid-template-columns: 460px 1fr;
+  gap: 20px;
+}
+
+.sat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.sat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+/* Dropzone */
+.dropzone-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 36px 20px;
+  background: var(--bg-surface-elevated);
+  border: 2px dashed var(--border-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: inherit;
+}
+
+.dropzone-area:hover {
+  border-color: var(--color-gold);
+  background: rgba(242, 183, 53, 0.04);
+}
+
+.dropzone-icon {
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+.dropzone-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dropzone-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.selected-file-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.file-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--bg-surface-elevated);
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.remove-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  color: var(--color-gold);
+  cursor: pointer;
+}
+
+.img-preview-box {
+  width: 100%;
+  max-height: 240px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: #000;
+}
+
+.img-preview-box img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Pre-event */
+.pre-event-section {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pre-event-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pre-event-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.pre-event-btn {
+  font-size: 0.72rem;
+  color: var(--color-gold);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface-elevated);
+}
+
+.pre-preview-thumbnail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.pre-preview-thumbnail img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Settings */
+.settings-card {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.setting-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.setting-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sensor-selector-pills {
+  display: flex;
+  gap: 8px;
+}
+
+.sensor-pill {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.sensor-pill.active {
+  background: rgba(242, 183, 53, 0.12);
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.georef-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: var(--bg-surface-elevated);
+  border-radius: 8px;
+}
+
+.georef-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: block;
+}
+
+.georef-desc {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.run-detection-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--color-gold) 0%, #d4a02a 100%);
+  color: #241B1A;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.run-detection-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sat-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  color: #ef4444;
+  font-size: 0.75rem;
+}
+
+/* Right Output Column */
+.metrics-summary-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.sat-metric-box {
+  background: var(--bg-surface-elevated);
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+}
+
+.sat-metric-k {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  display: block;
+}
+
+.sat-metric-v {
+  font-size: 1.2rem;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 4px 0;
+  display: block;
+}
+
+.sat-metric-hint {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  display: block;
+}
+
+.mask-preview-container {
+  margin: 20px 0;
+}
+
+.mask-preview-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.mask-canvas-box {
+  background: #000;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  max-height: 280px;
+}
+
+.mask-canvas-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.exposure-intersection-box {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.exposure-box-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.exposure-box-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 4px 0 10px;
+}
+
+.intersection-list {
+  list-style: none;
+  padding: 0;
+}
+
+.intersection-list li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  padding: 3px 0;
+}
+
+.uncertainty-notice-card {
+  background: rgba(242, 183, 53, 0.05);
+  border: 1px solid rgba(242, 183, 53, 0.2);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.notice-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  margin-bottom: 6px;
+}
+
+.notice-bullets {
+  list-style: disc;
+  padding-left: 18px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Empty State */
+.empty-detection-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px 32px;
+  height: 100%;
+}
+
+.empty-sat-icon {
+  color: var(--text-muted);
+  opacity: 0.4;
+  margin-bottom: 16px;
+}
+
+.empty-detection-card h3 {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.empty-detection-card p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  max-width: 440px;
+  margin-bottom: 24px;
+}
+
+.honesty-bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.honesty-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1000px) {
+  .sat-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
